@@ -1,7 +1,10 @@
 import 'package:args/args.dart';
 import 'package:next_feature/utils/colors.dart';
 
+/// Mixin to add and handle global flags for the CLI tool.
 mixin GlobalFlags {
+
+  /// Adds global flags to the provided [parser].
   void addGlobalFlags(ArgParser parser) {
     parser.addFlag(
       'help',
@@ -28,6 +31,7 @@ mixin GlobalFlags {
     );
   }
 
+  /// Handles the global flags based on the parsed [results].
   void handleGlobalFlags(ArgResults results) {
     if (results['help'] == true) {
       print(

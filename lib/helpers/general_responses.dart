@@ -1,6 +1,7 @@
 import 'package:next_feature/commands/base_command.dart';
 import 'package:next_feature/utils/colors.dart';
 
+/// A utility class for printing general responses and usage information.
 class GeneralResponses {
 
   static void printGeneralUsage(Map<String, BaseCommand> commands) {

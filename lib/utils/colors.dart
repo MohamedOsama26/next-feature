@@ -1,3 +1,4 @@
+/// A utility class for ANSI color codes to colorize terminal output.
 class Colors {
   static const String red = '\x1B[31m';
   static const String green = '\x1B[32m';
@@ -17,7 +18,7 @@ class Colors {
   static const String lightCyan = '\x1B[96m';
   static const String lightGrey = '\x1B[37m';
 
-
+  /// Wraps the given message with the specified ANSI color code.
   static String colorize(String message, String color) {
     return '$color$message$reset';
   }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+/// A simple feature generator for a Flutter project
 class FeatureGenerator {
   final String featureName;
   final String template;
@@ -19,6 +20,7 @@ class FeatureGenerator {
     required this.screens,
   });
 
+  /// Generates the feature structure based on the provided configuration
   void generate() {
     final basePath = Directory('lib/features/$featureName');
 
@@ -172,29 +174,5 @@ class FeatureGenerator {
       widgetDir.createSync(recursive: true);
       print('✅ Created folder: ${widgetDir.path}');
     }
-
-    // for (var dir in directories) {
-    //   final dirPath = Directory('${basePath.path}/$dir');
-    //   if (!dirPath.existsSync()) {
-    //     dirPath.createSync(recursive: true);
-    //     print('✅ Created folder: ${dirPath.path}');
-    //   }
-    // }
-
-    // final files = {
-    //   'data/data_sources/${featureName}_data_source.dart':
-    //       _dataSourceTemplate(),
-    //   'data/repositories/${featureName}_repository.dart': _repositoryTemplate(),
-    //   'domain/entities/${featureName}_entity.dart': _entityTemplate(),
-    //   'domain/repositories/${featureName}_repository.dart':
-    //       _domainRepositoryTemplate(),
-    //   'domain/use_cases/${featureName}_use_case.dart': _useCaseTemplate(),
-    //   'presentation/bloc/${featureName}_bloc.dart': _blocTemplate(),
-    //   'presentation/pages/${featureName}_page.dart': _pageTemplate(),
-    //   'presentation/widgets/${featureName}_widget.dart': _widgetTemplate(),
-    // };
-
-    print('Generating feature: $featureName using template: $template');
-    // This is where you would add the actual file generation logic
   }
 }
