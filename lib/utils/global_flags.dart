@@ -3,7 +3,6 @@ import 'package:next_feature/utils/colors.dart';
 
 /// Mixin to add and handle global flags for the CLI tool.
 mixin GlobalFlags {
-
   /// Adds global flags to the provided [parser].
   void addGlobalFlags(ArgParser parser) {
     parser.addFlag(
@@ -20,9 +19,9 @@ mixin GlobalFlags {
     );
     parser.addSeparator('Output formatting:');
     parser.addFlag(
-    'json',
-        help: 'Output results in JSON format.',
-        negatable: false,
+      'json',
+      help: 'Output results in JSON format.',
+      negatable: false,
     );
     parser.addFlag(
       'yaml',
@@ -37,7 +36,9 @@ mixin GlobalFlags {
       print(
         '${Colors.colorize('Usage', Colors.cyan)}: dart run bin/next_feature.dart command [options]',
       );
-      print('Use ${Colors.colorize('--help',Colors.grey)} with a specific command to see its options.');
+      print(
+        'Use ${Colors.colorize('--help', Colors.grey)} with a specific command to see its options.',
+      );
     }
     if (results['version'] == true) {
       print(

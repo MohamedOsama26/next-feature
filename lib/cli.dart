@@ -42,6 +42,5 @@ class CLI with GlobalFlags {
       command.configureWithBase(commandParser);
       _parser.addCommand(command.name, commandParser);
     }
-
   }
 }

@@ -8,7 +8,7 @@ abstract class BaseCommand {
   void configure(ArgParser parser);
 
   /// Internal: ensures `--help` is always added
-  void configureWithBase(ArgParser parser){
+  void configureWithBase(ArgParser parser) {
     parser.addFlag(
       'help',
       abbr: 'h',
@@ -20,7 +20,6 @@ abstract class BaseCommand {
   }
 
   void run(ArgResults results);
-
 
   void printUsage(ArgParser parser) {
     print('Usage: dart run bin/next_feature.dart $name [options]');
