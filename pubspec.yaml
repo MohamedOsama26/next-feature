@@ -1,6 +1,6 @@
 name: next_feature
 description: A CLI tool to generate Flutter feature folder structure with clean architecture.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/MohamedOsama26/next-feature
 homepage: https://github.com/MohamedOsama26/next-feature
 issue_tracker: https://github.com/MohamedOsama26/next-feature/issues

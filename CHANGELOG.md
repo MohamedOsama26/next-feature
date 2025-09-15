@@ -1,4 +1,4 @@
-## 0.0.1
+## 0.0.2
 
 * Initial release
 * Generate Flutter feature folder structures following clean architecture
