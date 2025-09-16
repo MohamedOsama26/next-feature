@@ -1,4 +1,4 @@
-/// A simple logger utility for console applications in Dart.
+/// A utility class for logging messages with different severity levels.
 class Logger {
   /// Logs an informational message in blue color.
   static void info(String message) {

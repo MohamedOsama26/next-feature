@@ -137,7 +137,9 @@ class CreateFeatureCommand extends BaseCommand {
     Logger.info('Use Cases: ${useCases.join(', ')}');
     Logger.info('Screens: ${screens.join(', ')}');
 
-    // Here you would add the logic to actually create the feature scaffold
+    /// Generate the feature using the FeatureGenerator class
+    /// with the provided options.
+    /// This class handles the actual file and directory creation.
     final generator = FeatureGenerator(
       featureName: featureName,
       stateManagementType: stateManagementType ?? 'bloc',
