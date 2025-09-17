@@ -4,6 +4,7 @@ import 'package:next_feature/utils/global_flags.dart';
 
 import 'commands/base_command.dart';
 import 'commands/create_feature_command.dart';
+import 'commands/create_remote_data_source_command.dart';
 
 /// Command-Line Interface (CLI) for the Next Feature tool.
 /// This tool helps in generating feature modules for Flutter applications.
@@ -11,6 +12,7 @@ class CLI with GlobalFlags {
   final ArgParser _parser = ArgParser();
   final Map<String, BaseCommand> _commands = {
     'create-feature': CreateFeatureCommand(),
+    'create-remote-data-source': CreateRemoteDataSourceCommand(),
   };
 
   /// Initializes the CLI by adding global flags and registering commands.

@@ -44,20 +44,18 @@ dart run bin/next_feature.dart create-feature
 
 ## 🚀 Usage
 
-### Interactive Mode
-Simply run the command and follow the prompts:
-
+### Interactive Mode (Recommended)
 ```bash
-next-feature create-feature
+dart pub global run next_feature create-feature
 ```
 
-The CLI will ask you to configure:
-- **Feature name** - The name of your feature (e.g., user_profile, authentication)
-- **State management** - Choose from bloc, getx, provider, or riverpod
-- **Data source splitting** - Separate local and remote data sources
-- **Models** - List of model classes to generate
-- **Use cases** - List of use case classes to generate
-- **Screens** - List of screen/page classes to generate
+The CLI will prompt you for:
+- Feature name
+- State management type (bloc/cubit/provider)
+- Whether to split data source
+- Models to generate
+
+**Note:** For best experience, use PowerShell, Windows Terminal, or any standard terminal. Some IDE integrated terminals may have limited interactive support.
 
 ### Command Line Options
 You can also provide options directly:

@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'package:next_feature/commands/base_command.dart';
 import 'package:args/args.dart';
-import 'package:prompts/prompts.dart' as prompts;
 import '../generator/feature_generator.dart';
 import '../utils/logger.dart';
 
@@ -57,7 +57,7 @@ class CreateFeatureCommand extends BaseCommand {
     String? featureName =
         results['feature-name'] as String? ??
         (results.rest.isNotEmpty ? results.rest.first : null);
-    featureName ??= prompts.get('Enter feature name');
+    featureName ??= _prompt('Enter feature name');
     if (featureName.trim().isEmpty) {
       Logger.error('Feature name cannot be empty');
       return;
@@ -68,7 +68,7 @@ class CreateFeatureCommand extends BaseCommand {
     if (results.wasParsed('state-management-type')) {
       stateManagementType = results['state-management-type'] as String?;
     } else {
-      stateManagementType = prompts.get(
+      stateManagementType = _prompt(
         'State management type (e.g., bloc, getx, provider, riverpod)',
         defaultsTo: 'bloc',
       );
@@ -79,7 +79,7 @@ class CreateFeatureCommand extends BaseCommand {
     if (results.wasParsed('split-data-source')) {
       splitDataSource = results['split-data-source'] as bool?;
     } else {
-      splitDataSource = prompts.getBool(
+      splitDataSource = _promptBool(
         'Split data source into local and remote?',
         defaultsTo: false,
       );
@@ -88,7 +88,7 @@ class CreateFeatureCommand extends BaseCommand {
     // Models
     List<String>? models = (results['models'] as List?)?.cast<String>();
     if (models == null || models.isEmpty) {
-      String modelsInput = prompts.get(
+      String modelsInput = _prompt(
         'List of model names to create (comma separated, leave empty for none)',
       );
       models = modelsInput.trim().isEmpty
@@ -103,7 +103,7 @@ class CreateFeatureCommand extends BaseCommand {
     // Use cases
     List<String>? useCases = (results['use-cases'] as List?)?.cast<String>();
     if (useCases == null || useCases.isEmpty) {
-      String useCasesInput = prompts.get(
+      String useCasesInput = _prompt(
         'List of use case names to create (comma separated, leave empty for none)',
       );
       useCases = useCasesInput.trim().isEmpty
@@ -118,7 +118,7 @@ class CreateFeatureCommand extends BaseCommand {
     // Screens
     List<String>? screens = (results['screens'] as List?)?.cast<String>();
     if (screens == null || screens.isEmpty) {
-      String screensInput = prompts.get(
+      String screensInput = _prompt(
         'List of screen names to create (comma separated, leave empty for none)',
       );
       screens = screensInput.trim().isEmpty
@@ -151,5 +151,19 @@ class CreateFeatureCommand extends BaseCommand {
     generator.generate();
 
     Logger.success('Feature "$featureName" created successfully!');
+  }
+
+  String _prompt(String message, {String? defaultsTo}) {
+    stdout.write('$message${defaultsTo != null ? ' [$defaultsTo]' : ''}: ');
+    String? input = stdin.readLineSync()?.trim();
+    return input?.isEmpty == true ? defaultsTo ?? '' : input!;
+  }
+
+  bool _promptBool(String message, {bool defaultsTo = false}) {
+    String defaultStr = defaultsTo ? 'y' : 'n';
+    stdout.write('$message (y/n) [$defaultStr]: ');
+    String? input = stdin.readLineSync()?.trim().toLowerCase();
+    if (input == null || input.isEmpty) return defaultsTo;
+    return input == 'y' || input == 'yes';
   }
 }
